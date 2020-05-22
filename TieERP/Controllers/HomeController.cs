@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace TieERP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
+            var model = _db.Warehouses.ToList();
+
+
+            return View(model);
         }
 
         public ActionResult About()
