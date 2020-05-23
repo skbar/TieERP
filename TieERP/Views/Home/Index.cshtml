@@ -1,25 +1,24 @@
 ﻿@model IEnumerable<TieERP.Models.Warehouse>
 
-@model IEnumerable<TieERP.Models.>
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>TieERP</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p class="lead">Free ERP system</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
-
+<h2>Warehouse List:</h2>
 <div class="row">
     <form method="get">
-        <input type="text" name="search"/>
+        <input type="text" name="search" />
         <input type="submit" />
     </form>
     @foreach (var warehouse in Model)
     {
         <div class="col-md-4">
-            <h2>@warehouse.Name</h2>
+            <h4>@warehouse.Name</h4>
             <ul>
                 <li>Produkt</li>
             </ul>
@@ -27,4 +26,22 @@
     }
 
 
+</div>
+<h2>Products List:</h2>
+<div>
+    @*Dwa modele w jednym widoku!
+    Stwórz nowy partial view (tutaj ./Products/View.cshtml),
+    W kontrolerze nowa metoda:
+
+    //GET: Table
+    public ActionResult Table()
+    {
+    var model = db.Products.ToList();
+
+    return PartialView("View", model);
+    }
+
+    Na końcu w domyślnym miejscu @Html.Action("Table", "Products")*@
+
+    @Html.Action("Table", "Products")
 </div>
