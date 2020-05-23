@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TieERP.Models.Warehouse>
+
+@model IEnumerable<TieERP.Models.>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -10,6 +12,10 @@
 </div>
 
 <div class="row">
+    <form method="get">
+        <input type="text" name="search"/>
+        <input type="submit" />
+    </form>
     @foreach (var warehouse in Model)
     {
         <div class="col-md-4">
