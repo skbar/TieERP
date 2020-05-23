@@ -13,7 +13,7 @@ namespace TieERP.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202005221539097_DatabaseInit"; }
+            get { return "202005232006058_DatabaseInit"; }
         }
         
         string IMigrationMetadata.Source

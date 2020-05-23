@@ -15,20 +15,11 @@ namespace TieERP.Migrations
                         Name = c.String(),
                         Description = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        MyProperty_Id = c.Int(),
+                        Warehouse_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Warehouses", t => t.MyProperty_Id)
-                .Index(t => t.MyProperty_Id);
-            
-            CreateTable(
-                "dbo.Warehouses",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
+                .ForeignKey("dbo.Warehouses", t => t.Warehouse_Id)
+                .Index(t => t.Warehouse_Id);
             
             CreateTable(
                 "dbo.Reviews",
@@ -41,6 +32,15 @@ namespace TieERP.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Products", t => t.Product_Id)
                 .Index(t => t.Product_Id);
+            
+            CreateTable(
+                "dbo.Warehouses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -118,8 +118,8 @@ namespace TieERP.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Products", "Warehouse_Id", "dbo.Warehouses");
             DropForeignKey("dbo.Reviews", "Product_Id", "dbo.Products");
-            DropForeignKey("dbo.Products", "MyProperty_Id", "dbo.Warehouses");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -127,14 +127,14 @@ namespace TieERP.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Reviews", new[] { "Product_Id" });
-            DropIndex("dbo.Products", new[] { "MyProperty_Id" });
+            DropIndex("dbo.Products", new[] { "Warehouse_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Reviews");
             DropTable("dbo.Warehouses");
+            DropTable("dbo.Reviews");
             DropTable("dbo.Products");
         }
     }
