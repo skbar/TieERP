@@ -43,6 +43,14 @@ namespace TieERP.Controllers
 
             return PartialView("View", model);
         }
+        //GET: Test
+        public ActionResult Test()
+        {
+            var model = db.Products.ToList();
+
+            return Json (model);
+        }
+
 
         // GET: Products/Create
         public ActionResult Create()
