@@ -10,6 +10,7 @@ namespace TieERP.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TieERP.Models.ApplicationDbContext context)

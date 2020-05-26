@@ -35,7 +35,6 @@ namespace TieERP.Controllers
             }
             return View(product);
         }
-
         //GET: Table
         public ActionResult Table()
         {
@@ -48,9 +47,8 @@ namespace TieERP.Controllers
         {
             var model = db.Products.ToList();
 
-            return Json (model);
+            return Json(model);
         }
-
 
         // GET: Products/Create
         public ActionResult Create()
@@ -63,7 +61,7 @@ namespace TieERP.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,WarehouseId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +93,7 @@ namespace TieERP.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,WarehouseId")] Product product)
         {
             if (ModelState.IsValid)
             {
