@@ -12,7 +12,7 @@ namespace TieERP.Controllers
         public ActionResult Index(string search = null)
         {
             IEnumerable<Warehouse> model;
-            
+
             if (!string.IsNullOrEmpty(search))
                 model = _db.Warehouses.Where(c => c.Name.Contains(search));
             else

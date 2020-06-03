@@ -17,6 +17,7 @@ namespace TieERP.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<WZ> WZs { get; set; }
 
         public static ApplicationDbContext Create()
         {
